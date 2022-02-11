@@ -1,24 +1,26 @@
-﻿using TestTaskEscher.DataModels.DbModels.PersonModels;
+﻿using System;
+using TestTaskEscher.DataModels.DbModels.PersonModels;
 
-namespace TestTaskEscher.DataModels.Dtos.PersonModels;
-
-public class PersonDto : BasePersonDto
+namespace TestTaskEscher.DataModels.Dtos.PersonModels
 {
-    public DateTime DateOfRegistration { get; set; }
-
-    public bool RegistrationAllowed { get; set; }
-
-    public SpouseDto Spouse { get; set; }
-
-    public Person ToPerson()
+    public class PersonDto : BasePersonDto
     {
-        return new Person
+        public DateTime DateOfRegistration { get; set; }
+
+        public bool RegistrationAllowed { get; set; }
+
+        public SpouseDto Spouse { get; set; }
+
+        public Person ToPerson()
         {
-            FirstName = FirstName,
-            Surname = Surname,
-            DateOfBirth = DateOfBirth,
-            DateOfRegistration = DateOfRegistration,
-            RegistrationAllowed = RegistrationAllowed,
-        };
+            return new Person
+            {
+                FirstName = FirstName,
+                Surname = Surname,
+                DateOfBirth = DateOfBirth,
+                DateOfRegistration = DateOfRegistration,
+                RegistrationAllowed = RegistrationAllowed,
+            };
+        }
     }
 }

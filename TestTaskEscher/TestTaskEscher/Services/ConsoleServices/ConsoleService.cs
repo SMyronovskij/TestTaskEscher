@@ -1,4 +1,6 @@
-﻿namespace TestTaskEscher.Services.ConsoleServices
+﻿using System;
+
+namespace TestTaskEscher.Services.ConsoleServices
 {
     public class ConsoleService : IConsoleService
     {

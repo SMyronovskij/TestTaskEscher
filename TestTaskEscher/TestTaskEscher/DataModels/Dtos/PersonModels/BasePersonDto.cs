@@ -1,12 +1,15 @@
-﻿namespace TestTaskEscher.DataModels.Dtos.PersonModels;
+﻿using System;
 
-public class BasePersonDto
+namespace TestTaskEscher.DataModels.Dtos.PersonModels
 {
-    public int Id { get; set; }
+    public class BasePersonDto
+    {
+        public int Id { get; set; }
 
-    public string FirstName { get; set; }
+        public string FirstName { get; set; }
 
-    public string Surname { get; set; }
+        public string Surname { get; set; }
 
-    public DateTime DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
+    }
 }

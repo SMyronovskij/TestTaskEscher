@@ -1,6 +1,8 @@
-﻿using TestTaskEscher.DataModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using TestTaskEscher.DataModel;
 using TestTaskEscher.DataModels.DbModels.PersonModels;
-using TestTaskEscher.DataModels.Dtos.PersonModels;
 
 namespace TestTaskEscher.Providers.DataProviders
 {
