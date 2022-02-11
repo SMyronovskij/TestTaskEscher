@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Moq;
-using TestTaskEscher.Providers.DataProviders;
+using TestTaskEscher.Providers;
 using TestTaskEscher.Services;
 using TestTaskEscher.Services.ConsoleServices;
 using Xunit;
@@ -39,14 +39,14 @@ namespace TestTaskEscher.Tests.Services
                 .Returns(spouseDateOfBirthString);
 
             _consoleService.Setup(x => x.ReadKey(false))
-                .Returns(new ConsoleKeyInfo('y',ConsoleKey.Y,false,false,false));
+                .Returns(new ConsoleKeyInfo('y', ConsoleKey.Y, false, false, false));
 
             var user = _interactionService.CreateUser();
 
             DateTime.TryParse(userDateOfBirthString, out DateTime userDateOfBirth);
             DateTime.TryParse(spouseDateOfBirthString, out DateTime spouseDateOfBirth);
 
-            Assert.Equal(userName,user.FirstName);
+            Assert.Equal(userName, user.FirstName);
             Assert.Equal(userSurname, user.Surname);
             Assert.Equal(userDateOfBirth, user.DateOfBirth);
             Assert.Equal(spouseName, user.Spouse.FirstName);
@@ -137,5 +137,48 @@ namespace TestTaskEscher.Tests.Services
             Assert.True(user.RegistrationAllowed);
         }
 
+        [Fact]
+        public void SelectStorageDbTest()
+        {
+            _consoleService.SetupSequence(x => x.ReadKey(false))
+                .Returns(new ConsoleKeyInfo('1', ConsoleKey.D1, false, false, false));
+
+            var type = _interactionService.SelectStorage();
+
+            Assert.Equal(StorageType.Db, type);
+        }
+
+        [Fact]
+        public void SelectStorageTextFileTest()
+        {
+            _consoleService.SetupSequence(x => x.ReadKey(false))
+                .Returns(new ConsoleKeyInfo('2', ConsoleKey.D2, false, false, false));
+
+            var type = _interactionService.SelectStorage();
+
+            Assert.Equal(StorageType.File, type);
+        }
+
+        [Fact]
+        public void ShowMenuCreateUserTest()
+        {
+            _consoleService.SetupSequence(x => x.ReadKey(false))
+                .Returns(new ConsoleKeyInfo('1', ConsoleKey.D1, false, false, false));
+
+            var type = _interactionService.ShowMenu();
+
+            Assert.Equal(MenuActions.CreateUser, type);
+        }
+
+        [Fact]
+        public void ShowMenuExitTest()
+        {
+            _consoleService.SetupSequence(x => x.ReadKey(false))
+                .Returns(new ConsoleKeyInfo('9', ConsoleKey.D9, false, false, false));
+
+            var type = _interactionService.ShowMenu();
+
+            Assert.Equal(MenuActions.Exit, type);
+        }
     }
 }

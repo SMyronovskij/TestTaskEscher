@@ -97,7 +97,7 @@ namespace TestTaskEscher.Services
 
         public void ShowErrorBeforeExit()
         {
-            Console.WriteLine("Error executing app. Press any key to exit");
+            _consoleService.WriteLine("Error executing app. Press any key to exit");
         }
 
         #endregion
