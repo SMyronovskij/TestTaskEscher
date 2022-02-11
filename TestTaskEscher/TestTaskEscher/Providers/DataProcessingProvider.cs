@@ -34,12 +34,12 @@ public class DataProcessingProvider : IDataProcessingProvider
 
     public PersonDto GetPerson(int Id)
     {
-        return null;
+        throw new NotImplementedException();
     }
 
     public List<BasePersonDto> GetPeople()
     {
-        return null;
+        throw new NotImplementedException();
     }
 
     public SpouseDto GetSpouse(int Id)
