@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Moq;
 using TestTaskEscher.DataModel;
 using TestTaskEscher.DataModels.DbModels.PersonModels;
